@@ -25,16 +25,26 @@ hanoi:
 	
 nouno:
 	#Cambio apuntadores 
+	add $a0,$a0,-1
+	add $t0,$zero,$a3
+	add $a3,$zero,$a2
+	add $a2,$zero,$t0
 	
 	jal hanoi
 	
 	#Mover disco
 	
 	#Cambio apuntadores
+	add $t0, $zero,$a1
+	add $a1,$zero,$a3
+	add $a3,$zero,$t0
 	
 	jal hanoi
 	
 	#Cambio apuntadores
+	add $t0, $a1, $zero
+	addi $a1,$a3,-4
+	add $a3,$t0,4
 	
 	jr $ra
 	
