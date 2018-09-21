@@ -29,6 +29,11 @@ hanoi:
 	beq $a0,1,uno
 	
 nouno:
+	#Guardando apuntadores memoria + dato
+	add $sp, $sp, -8
+	sw $ra, 0($sp)
+	sw $a0, 4($sp)
+	
 	#Cambio apuntadores 
 	add $a0,$a0,-1
 	add $t0,$zero,$a3
@@ -55,6 +60,11 @@ nouno:
 	add $t0, $a1, $zero
 	addi $a1,$a3,-4
 	add $a3,$t0,4
+	
+	#Descargar apuntadores memoria + dato
+	lw $ra, 0($sp)
+	lw $a0, 4($sp)
+	addi $sp, $sp, 8
 	
 	jr $ra
 	
