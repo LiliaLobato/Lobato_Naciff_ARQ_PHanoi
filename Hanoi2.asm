@@ -1,7 +1,7 @@
 .data
-tower_A: .word 0 0 0 0 0 0 0 0
-tower_B: .word 0 0 0 0 0 0 0 0
-tower_C: .word 0 0 0 0 0 0 0 0
+tower_A: .word 0 0 0 0 0 0 0 0 #0 0 0 0 0 0 0
+tower_B: .word 0 0 0 0 0 0 0 0 #0 0 0 0 0 0 0
+tower_C: .word 0 0 0 0 0 0 0 0 #0 0 0 0 0 0 0
 
 .text
 main:
@@ -11,12 +11,15 @@ main:
 	la $t6, tower_A
 	add $a0,$zero, 8
 	
+	#Copia Num. Discos
+	add $s2,$zero, $a0
+	
 	#Apuntador a tope torre
 	sll $s1, $a0, 2
 	add $a1, $a1, $s1
 	addi $a1, $a1, -4
 	
-for:	
+for:	#Llenado de Torre 1
 	sw $s2, ($t6)
 	addi $t6, $t6, 4
 	addi $s2, $s2, -1
@@ -34,7 +37,7 @@ nouno:
 	sw $ra, 0($sp)
 	sw $a0, 4($sp)
 	
-	#Cambio apuntadores 
+	#Cambio apuntadores 1
 	add $a0,$a0,-1
 	add $t0,$zero,$a3
 	add $a3,$zero,$a2
@@ -42,21 +45,22 @@ nouno:
 	
 	jal hanoi
 	
-	#Mover disco
+	#Mover disco 2
 	lw $s1, 0($a1)
 	sw $s1, 0($a3)
 	sw $zero, 0($a1)
 	addi $a1, $a1, -4
 	addi $a3, $a3, 4
 	
-	#Cambio apuntadores
-	add $t0, $zero,$a1
-	add $a1,$zero,$a3
-	add $a3,$zero,$t0
+	#Cambio apuntadores 2
+	add $t0, $zero, $a1 
+	sub $a1, $a2, 4 
+	addi $a2, $a3, 4
+	addi $a3, $t0, 0 
 	
 	jal hanoi
 	
-	#Cambio apuntadores
+	#Cambio apuntadores 3
 	add $t0, $a1, $zero
 	addi $a1,$a3,-4
 	add $a3,$t0,4
@@ -69,7 +73,7 @@ nouno:
 	jr $ra
 	
 uno:
-	#mover disco
+	#mover disco 1
 	lw $s1, 0($a1)
 	sw $s1, 0($a2)
 	sw $zero, 0($a1)
