@@ -21,7 +21,27 @@ endFor:
 	j exit
 
 hanoi:
-
+	beq $a0,1,uno
+	
+nouno:
+	#Cambio apuntadores 
+	
+	jal hanoi
+	
+	#Mover disco
+	
+	#Cambio apuntadores
+	
+	jal hanoi
+	
+	#Cambio apuntadores
+	
+	jr $ra
+	
+uno:
+	#mover disco
+	
+	jr $ra
 	
 
 exit:
