@@ -33,6 +33,11 @@ nouno:
 	jal hanoi
 	
 	#Mover disco
+	lw $s1, 0($a1)
+	sw $s1, 0($a3)
+	sw $zero, 0($a1)
+	addi $a1, $a1, -4
+	addi $a3, $a3, 4
 	
 	#Cambio apuntadores
 	add $t0, $zero,$a1
@@ -50,6 +55,11 @@ nouno:
 	
 uno:
 	#mover disco
+	lw $s1, 0($a1)
+	sw $s1, 0($a2)
+	sw $zero, 0($a1)
+	addi $a1, $a1, -4
+	addi $a2, $a2, 4
 	
 	jr $ra
 	
