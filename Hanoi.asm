@@ -37,8 +37,8 @@ N1:	bne $s0, 1, Recursivo   # if n < 1
 	lw $s5, 0($t1)		# Guarda valor ultimo
 	sw $zero, 0($t1)	# Elimina de Stack ultimo valor
 	sw $s5, 0($t2)		# Guarda valor en Stack
-	addi $t1, $t1, -4 	# Apuntar ultimo valor
-	addi $t2, $t2, 4 	# Apuntar ultimo valor
+#	addi $t1, $t1, -4 	# Apuntar ultimo valor
+#	addi $t2, $t2, 4 	# Apuntar ultimo valor
 
 	
 	#Descarga memoria
@@ -50,10 +50,6 @@ N1:	bne $s0, 1, Recursivo   # if n < 1
 Recursivo:
 
 	add $s4, $zero, $s0	#copia n
-	
-	add $t4, $zero, $t1
-	add $t5, $zero, $t2
-	add $t6, $zero, $t3
 	
 	add $t1, $zero, $t1
 	add $t0, $zero, $t2
