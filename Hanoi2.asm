@@ -11,6 +11,11 @@ main:
 	la $t6, tower_A
 	add $a0,$zero, 8
 	
+	#Apuntador a tope torre
+	sll $s1, $a0, 2
+	add $a1, $a1, $s1
+	addi $a1, $a1, -4
+	
 for:	
 	sw $s2, ($t6)
 	addi $t6, $t6, 4
